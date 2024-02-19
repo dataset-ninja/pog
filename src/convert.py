@@ -100,10 +100,31 @@ def convert_and_upload_supervisely_project(
             datetime = sly.Tag(datetime_meta, value=tags_vals[1])
             latitude = sly.Tag(latitude_meta, value=float(tags_vals[2]))
             longitude = sly.Tag(longitude_meta, value=float(tags_vals[3]))
-            speed = sly.Tag(speed_meta, value=float(tags_vals[4]))
-            distance = sly.Tag(distance_meta, value=float(tags_vals[5]))
+            height_above = sly.Tag(height_above_takeoff_meta, value=float(tags_vals[4]))
+            altitude_above = sly.Tag(altitude_above_meta, value=float(tags_vals[5]))
 
-            tags.extend([time, datetime, latitude, longitude, speed, distance])
+            speed = sly.Tag(speed_meta, value=float(tags_vals[6]))
+            distance = sly.Tag(distance_meta, value=float(tags_vals[7]))
+
+            compass = sly.Tag(compass_meta, value=float(tags_vals[8]))
+            pitch = sly.Tag(pitch_meta, value=float(tags_vals[9]))
+            roll = sly.Tag(roll_meta, value=float(tags_vals[10]))
+
+            tags.extend(
+                [
+                    time,
+                    datetime,
+                    latitude,
+                    longitude,
+                    height_above,
+                    altitude_above,
+                    speed,
+                    distance,
+                    compass,
+                    pitch,
+                    roll,
+                ]
+            )
 
         # image_np = sly.imaging.image.read(image_path)[:, :, 0]
         # img_height = image_np.shape[0]
@@ -126,12 +147,19 @@ def convert_and_upload_supervisely_project(
 
     obj_class = sly.ObjClass("pedestrain", sly.Rectangle)
 
-    time_meta = sly.TagMeta("time", sly.TagValueType.ANY_NUMBER)
-    datetime_meta = sly.TagMeta("datetime", sly.TagValueType.ANY_STRING)
+    time_meta = sly.TagMeta("time(millisecond)", sly.TagValueType.ANY_NUMBER)
+    datetime_meta = sly.TagMeta("datetime(utc)", sly.TagValueType.ANY_STRING)
     latitude_meta = sly.TagMeta("latitude", sly.TagValueType.ANY_NUMBER)
     longitude_meta = sly.TagMeta("longitude", sly.TagValueType.ANY_NUMBER)
-    speed_meta = sly.TagMeta("speed", sly.TagValueType.ANY_NUMBER)
-    distance_meta = sly.TagMeta("distance", sly.TagValueType.ANY_NUMBER)
+    height_above_takeoff_meta = sly.TagMeta(
+        "height_above_takeoff(feet)", sly.TagValueType.ANY_NUMBER
+    )
+    altitude_above_meta = sly.TagMeta("altitude_above_seaLevel(feet)", sly.TagValueType.ANY_NUMBER)
+    speed_meta = sly.TagMeta("speed(mph)", sly.TagValueType.ANY_NUMBER)
+    distance_meta = sly.TagMeta("distance(feet)", sly.TagValueType.ANY_NUMBER)
+    compass_meta = sly.TagMeta("compass_heading(degrees)", sly.TagValueType.ANY_NUMBER)
+    pitch_meta = sly.TagMeta("pitch(degrees)", sly.TagValueType.ANY_NUMBER)
+    roll_meta = sly.TagMeta("roll(degrees)", sly.TagValueType.ANY_NUMBER)
 
     meta = sly.ProjectMeta(
         obj_classes=[obj_class],
@@ -142,6 +170,11 @@ def convert_and_upload_supervisely_project(
             longitude_meta,
             speed_meta,
             distance_meta,
+            height_above_takeoff_meta,
+            altitude_above_meta,
+            compass_meta,
+            pitch_meta,
+            roll_meta,
         ],
     )
     api.project.update_meta(project.id, meta.to_json())
@@ -151,7 +184,19 @@ def convert_and_upload_supervisely_project(
     with open(meta_path, "r") as file:
         csvreader = csv.reader(file)
         for row in csvreader:
-            name_to_meta[row[0]] = [row[1], row[2], row[3], row[4], row[9], row[10]]
+            name_to_meta[row[0]] = [
+                row[1],
+                row[2],
+                row[3],
+                row[4],
+                row[5],
+                row[8],
+                row[9],
+                row[10],
+                row[21],
+                row[22],
+                row[23],
+            ]
 
     for ds_name, ann_path in ds_name_to_anns.items():
 

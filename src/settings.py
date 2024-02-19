@@ -20,11 +20,11 @@ HIDE_DATASET = True  # set False when 100% sure about repo quality
 ##################################
 # * After uploading to instance ##
 ##################################
-LICENSE: License = License.PubliclyAvailable()
+LICENSE: License = License.Unknown()
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Domain.DroneInspection()]
-CATEGORY: Category = Category.Safety(extra=[Category.Aerial(), Category.Drones()])
+CATEGORY: Category = Category.Safety(extra=[Category.Drones()])
 
-CV_TASKS: List[CVTask] = [CVTask.ObjectDetection()]
+CV_TASKS: List[CVTask] = [CVTask.ObjectDetection(), CVTask.Identification()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.ObjectDetection()]
 
 RELEASE_DATE: Optional[str] = "2023-08-31"  # e.g. "YYYY-MM-DD"
@@ -36,7 +36,7 @@ HOMEPAGE_URL: str = (
 )
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 14061671
+PREVIEW_IMAGE_ID: int = 14088624
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/pog"
@@ -72,7 +72,19 @@ ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://uni-tuebingen.de/"
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
 SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
-    "meta data": ["time", "datetime", "latitude", "longitude", "speed", "distance"],
+    "meta data": [
+        "time(millisecond)",
+        "datetime(utc)",
+        "latitude",
+        "longitude",
+        "height_above_takeoff(feet)",
+        "altitude_above_seaLevel(feet)",
+        "speed(mph)",
+        "distance(feet)",
+        "compass_heading(degrees)",
+        "pitch(degrees)",
+        "roll(degrees)",
+    ],
 }
 TAGS: Optional[List[str]] = None
 
