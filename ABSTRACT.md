@@ -13,7 +13,7 @@ Numerous factors contribute to the appearance of objects, including variations i
 
 The authors have compiled the experimental dataset PeopleOnGrass (POG), which comprises 2,900 images with a resolution of 3840x2160 pixels. These images depict individuals captured from various perspectives and altitudes, ranging from 0° (horizontal) to 90° (top-down), and heights spanning from 4 meters to 103 meters. Each image is meticulously labeled with its precise altitude and angle of capture. Additionally, the dataset includes supplementary metadata such as GPS coordinates, UAV velocity and rotation information, timestamps, and other relevant details.
 
-<img src="https://github.com/dataset-ninja/pog/assets/120389559/931db89b-68fe-4e47-8151-8b75dcc730e7" alt="image" width="1000">
+<img src="https://github.com/dataset-ninja/pog/assets/120389559/931db89b-68fe-4e47-8151-8b75dcc730e7" alt="image" width="800">
 
 <span style="font-size: smaller; font-style: italic;">Example images of the dataset POG, showing the same scenery taken from different perspectives (top: 10m, 10◦, bottom: 100m, 90◦).</span>
 
@@ -26,7 +26,7 @@ The data collection was conducted using a DJI Matrice 210 drone equipped with a 
 
 The meta values lie within the error thresholds introduced by the different sensors.
 
-<img src="https://github.com/dataset-ninja/pog/assets/120389559/b7726ff0-eb4a-4e8f-9bef-39d6f7fedd49" alt="image" width="1000">
+<img src="https://github.com/dataset-ninja/pog/assets/120389559/b7726ff0-eb4a-4e8f-9bef-39d6f7fedd49" alt="image" width="800">
 
 <span style="font-size: smaller; font-style: italic;">Distribution of objects in PeopleOnGrass (POG) across different levels of altitude and camera pitch angles. For visualization purposes only a 4x10 grid is shown.</span>
 

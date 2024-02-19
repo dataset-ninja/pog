@@ -14,7 +14,7 @@ from dataset_tools.templates import (
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME: str = "POG"
-PROJECT_NAME_FULL: str = "POG: People On Grass Dataset"
+PROJECT_NAME_FULL: str = "POG: People on Grass Dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
