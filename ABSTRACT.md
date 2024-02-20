@@ -1,5 +1,4 @@
-The **POG: People On Grass Dataset** is a real-world dataset. It shows people on mostly grassy areas from various angles and altitudes between 4 and 103 m. It contains 13,713 objects in 2900 images. The images are taken with a resolution of 3840 × 2150 px and also come with meta data like GPS location as well as
-UAS altitude and attitude.
+The **POG: People On Grass Dataset** is a real-world dataset. It shows people on mostly grassy areas from various angles and altitudes between 4 and 103 m. It contains 13,713 objects in 2900 images. The images are taken with a resolution of 3840 × 2150 px and also come with meta data like GPS location, altitude and attitude. The pictures were taken with a UAV by the University of Tübingen as part of the Avalon project.
 
 ## Motivation
 
@@ -31,3 +30,4 @@ The meta values lie within the error thresholds introduced by the different sens
 <span style="font-size: smaller; font-style: italic;">Distribution of objects in PeopleOnGrass (POG) across different levels of altitude and camera pitch angles. For visualization purposes only a 4x10 grid is shown.</span>
 
 The authors manually and carefully annotate 13,713 people. They note that this is a simple real-world data set, suffering from fewer confounders than large data sets which is ideal for testing out the efficacy of multi-modal methods.
+
